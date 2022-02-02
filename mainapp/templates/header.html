@@ -1,0 +1,52 @@
+{% load static %}
+<div class="header">
+    <nav class="navbar top-navbar navbar-expand-md navbar-light">
+        <!-- Logo -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'mainapp:dashboard' %}">
+                <!-- Logo icon -->
+<!--                <b><img src="{% static 'dashboard/images/logo.png' %}" alt="homepage" class="dark-logo" /></b>-->
+                <!--End Logo icon -->
+                <!-- Logo text -->
+<!--                <span><img src="{% static 'dashboard/images/logo-text.png' %}" alt="homepage" class="dark-logo" /></span>-->
+<!--            Hi {{ request.user.first_name }}-->
+            </a>
+        </div>
+        <!-- End Logo -->
+        <div class="navbar-collapse">
+            <!-- toggle and nav items -->
+            <ul class="navbar-nav mr-auto mt-md-0">
+                <!-- This is  -->
+                <li class="nav-item">
+                    <a class="nav-link toggle-nav hidden-md-up text-muted" href="javascript:void(0)">
+                        <i class="mdi mdi-menu"></i>
+                    </a>
+                </li>
+                <li class="nav-item m-l-10">
+                    <a class="nav-link sidebartoggle hidden-sm-down text-muted" href="javascript:void(0)">
+                        <i class="ti-menu"></i>
+                    </a>
+                </li>
+                <li class="nav-item m-l-10">
+                   Username: {{ request.user.username }} Organization: {{ request.user.organization_name }}
+                </li>
+            </ul>
+            <!-- User profile and search -->
+            <ul class="navbar-nav my-lg-0 mt-3">
+<!--                &lt;!&ndash; Subscription alert &ndash;&gt;-->
+<!--                 <li class="nav-item">-->
+<!--&lt;!&ndash;                    <div class="alert alert-danger mx-2">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <strong><i class="fa fa-warning"></i> Subscription Alert!</strong> <a class="text-danger" href="#">View details</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                      </div>&ndash;&gt;-->
+<!--                     -->
+<!--                </li> -->
+                <!-- Profile -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-muted" href="{% url 'logout' %}">Logout
+                        <i class="fa fa-sign-out"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>

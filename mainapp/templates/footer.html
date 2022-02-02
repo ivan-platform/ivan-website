@@ -1,0 +1,236 @@
+{% if request.user.admin %}
+<div class="left-sidebar">
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar">
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav">
+            <ul id="sidebar-menu">
+                <li class="nav-devider"></li>
+                <li class="nav-label">Admin Dashboard</li>
+                <li>
+                    <a class="has-arrow" href="#" aria-expanded="true">
+                        <i class="fa fa-tachometer"></i>
+                        <span class="show-menu">Admin Dashboard</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{% url 'accounts:dashboard' %}">Dashboard</a></li>
+                        <li><a href="{% url 'accounts:store_enquiries' %}">Store Enquiry</a></li>
+                        <li><a href="{% url 'accounts:active_store' %}">Active Store</a></li>
+                        <li><a href="{% url 'accounts:application_visit_details' %}">Application Visit Tracking</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="has-arrow" href="#" aria-expanded="true">
+                        <i class="fa fa-check"></i>
+                        <span class="show-menu">Review Verification</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{% url 'accounts:pending_reviews' %}">Pending Review</a></li>
+                        <li><a href="{% url 'accounts:verified_reviews' %}">Verified Review</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="has-arrow" href="#" aria-expanded="true">
+                        <i class="fa fa-columns"></i>
+                        <span class="show-menu">Category Group</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{% url 'accounts:admin_category_group' %}">Category Groups</a></li>
+                        <li><a href="{% url 'accounts:admin_add_category_group' %}">Add Category Group</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="has-arrow" href="#" aria-expanded="true">
+                        <i class="fa fa-columns"></i>
+                        <span class="show-menu">Category and Collection</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{% url 'accounts:admin_category_name' %}">Categories</a></li>
+                        <li><a href="{% url 'accounts:admin_add_category' %}">Add Category</a></li>
+                        <li><a href="{% url 'accounts:admin_product' %}">Product Collections</a></li>
+                        <li><a href="{% url 'accounts:admin_add_product' %}">Add Product</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="has-arrow" href="#" aria-expanded="true">
+                        <i class="fa fa-columns"></i>
+                        <span class="show-menu">Product Templates</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{% url 'accounts:admin_product_templates' %}">View Templates</a></li>
+                        <li><a href="{% url 'accounts:admin_add_product_template' %}">Add Templates</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="has-arrow" href="#" aria-expanded="true">
+                        <i class="fa fa-columns"></i>
+                        <span class="show-menu">Payouts</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{% url 'accounts:admin_history_payouts' %}">Historical Payouts</a></li>
+                        <li><a href="{% url 'accounts:admin_store_payouts' %}">Current Cycle Payouts</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="has-arrow" href="#" aria-expanded="true">
+                        <i class="fa fa-columns"></i>
+                        <span class="show-menu">Orders</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{% url 'accounts:admin_pending_orders' %}">Pending Orders</a></li>
+                        <li><a href="{% url 'accounts:admin_under_process_orders' %}">Under Process Orders</a></li>
+                        <li><a href="{% url 'accounts:admin_shipped_orders' %}">Shipped Orders</a></li>
+                        <li><a href="{% url 'accounts:admin_refunded_orders' %}">Refunded Orders</a></li>
+                        <li><a href="{% url 'accounts:admin_canceled_orders' %}">Canceled Orders</a></li>
+                        <li><a href="{% url 'accounts:admin_delivered_orders' %}">Delivered Orders</a></li>
+                        <li><a href="{% url 'accounts:admin_declined_orders' %}">Declined Orders</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="has-arrow" href="#" aria-expanded="true">
+                        <i class="fa fa-columns"></i>
+                        <span class="show-menu">General Enquiries</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{% url 'accounts:admin_general_enquiries' %}">General Enquiries</a></li>
+                        <li><a href="{% url 'accounts:admin_resolved_general_enquiries' %}">Resolved General Enquiries</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="has-arrow" href="#" aria-expanded="true">
+                        <i class="fa fa-columns"></i>
+                        <span class="show-menu">Payment Methods</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{% url 'accounts:checkout_payment_methods' %}">Checkout Payment Methods</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+</div>
+{% else %}
+<div class="left-sidebar">
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar">
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav">
+            <ul id="sidebar-menu">
+                <li class="nav-devider"></li>
+                <li class="nav-label">Store Management</li>
+                <li>
+                    <a class="has-arrow" href="#" aria-expanded="false">
+                        <i class="fa fa-tachometer"></i>
+                        <span class="hide-menu">Store Configuration</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{% url 'accounts:dashboard' %}">Dashboard</a></li>
+                        <li><a href="{% url 'accounts:store_name' %}">Store Details</a></li>
+                        <li><a href="{% url 'accounts:store_address' %}">Store Address</a></li>
+                        <li><a href="{% url 'accounts:working_days' %}">Working Days and Time</a></li>
+                        <li><a href="{% url 'accounts:delivery_schedule' %}">Delivery Schedule</a></li>
+                        <li><a href="{% url 'accounts:delivery_charges' %}">Delivery Charges</a></li>
+                        <li><a href="{% url 'accounts:notifications' %}">Notifications</a></li>
+                        <li><a href="{% url 'accounts:add_notification' %}">Create Notifications</a></li>
+                        <li><a href="{% url 'accounts:service_pincodes' %}">Service PIN Codes</a></li>
+                        <li><a href="{% url 'accounts:add_service_pincodes' %}">Add Service PIN Code</a></li>
+                    </ul>
+                </li>
+                <li class="nav-label">Products & Category</li>
+                <li>
+                    <a class="has-arrow" href="#" aria-expanded="false">
+                        <i class="fa fa-columns"></i>
+                        <span class="hide-menu">Products & Category</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{% url 'accounts:category' %}">Category</a></li>
+                        <li><a href="{% url 'accounts:add_category' %}">Add Category</a></li>
+                        <li><a href="{% url 'accounts:products' %}">Products</a></li>
+                        <li><a href="{% url 'accounts:add_product' %}">Add Products (Individual)</a></li>
+                        <li><a href="{% url 'accounts:add_bulk_product' %}">Add Products (Bulk)</a></li>
+                        <li><a href="{% url 'accounts:add_template_product' %}">Add Products (Template)</a></li>
+                        <li><a href="{% url 'accounts:add_product_price' %}">Price Update</a></li>
+                    </ul>
+                </li>
+                <li class="nav-label">Manage Subscriptions</li>
+                <li>
+                    <a class="has-arrow" href="#" aria-expanded="false">
+                        <i class="fa fa-columns"></i>
+                        <span class="hide-menu">Subscriptions</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{% url 'accounts:subscription' %}">Subscription Details</a></li>
+                    </ul>
+                </li>
+                <li class="nav-label">Manage Offers</li>
+                <li>
+                    <a class="has-arrow" href="#" aria-expanded="false">
+                        <i class="fa fa-gift"></i>
+                        <span class="show-menu">Offers</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{% url 'accounts:admin_offers' %}">Offers</a></li>
+                        <li><a href="{% url 'accounts:admin_add_offers' %}">Add Offer</a></li>
+                    </ul>
+                </li>
+                <li class="nav-label">Manage Orders</li>
+                <li>
+                    <a class="has-arrow" href="#" aria-expanded="false">
+                        <i class="fa fa-list"></i>
+                        <span class="hide-menu">Orders</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{% url 'accounts:pending_orders' %}">Pending</a></li>
+                        <li><a href="{% url 'accounts:under_process_orders' %}">Under Process</a></li>
+                        <li><a href="{% url 'accounts:shipped_orders' %}">Shipped Orders</a></li>
+                        <li><a href="{% url 'accounts:canceled_orders' %}">Canceled/Refunded</a></li>
+                        <li><a href="{% url 'accounts:completed_orders' %}">Completed</a></li>
+                    </ul>
+                </li>
+                <li class="nav-label">Reports</li>
+                <li>
+                    <a class="has-arrow" href="#" aria-expanded="false">
+                        <i class="fa fa-list"></i>
+                        <span class="hide-menu">Reports/Invoice</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{% url 'accounts:generate_all_invoice' %}">Get All Invoice</a></li>
+                        <li><a href="{% url 'accounts:invoice_by_id' %}">Get Invoice By Order Id</a></li>
+                        <li><a href="{% url 'accounts:order_details' %}">Purchase Consolidation Report</a></li>
+                        <li><a href="{% url 'accounts:get_revenue' %}">Revenue Report</a></li>
+                    </ul>
+                </li>
+                <li class="nav-label">User</li>
+                <li>
+                    <a class="has-arrow" href="#" aria-expanded="false">
+                        <i class="fa fa-users"></i>
+                        <span class="hide-menu">Users</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{% url 'accounts:users' %}">View users</a></li>
+                        <li><a href="{% url 'accounts:users_address' %}">Users Address</a></li>
+                    </ul>
+                </li>
+                <li class="nav-label">Transactions</li>
+                <li>
+                    <a href="{% url 'accounts:transactions' %}">
+                        <i class="fa fa-list"></i>
+                        <span class="hide-menu">Transactions</span>
+                    </a>
+                </li>
+                <li class="nav-label">Payouts</li>
+                <li>
+                    <a href="{% url 'accounts:store_payouts' %}">
+                        <i class="fa fa-list"></i>
+                        <span class="hide-menu">Payouts</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+</div>
+{% endif %}

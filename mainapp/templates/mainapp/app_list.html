@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}App list{% endblock %}
+
+{% block content %}
+<!-- Bread crumb -->
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">App list</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">App list</li>
+        </ol>
+    </div>
+</div>
+<!-- End Bread crumb -->
+<div class="container-fluid">
+    <!-- Start Page Content -->
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">App List</h4>
+                    <div class="table-responsive m-t-40">
+                        <div id="example23_wrapper" class="dataTables_wrapper">
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert {{ message.tags }}" role="alert">{{ message|safe }}</div>
+                                {% endfor %}
+                            {% endif %}
+
+                            <table id="example23" class="display nowrap table table-hover table-striped table-bordered dataTable" cellspacing="0" width="100%" role="grid" aria-describedby="example23_info" style="width: 100%;">
+                                <thead>
+                                    <tr role="row">
+                                        <th class="sorting" tabindex="0" aria-controls="example23" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 181.4px;">Action</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example23" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 181.4px;">App Name</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example23" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 430.4px;">Description</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th rowspan="1" colspan="1">Action</th>
+                                        <th rowspan="1" colspan="1">App Name</th>
+                                        <th rowspan="1" colspan="1">Description</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                {% for obj in object_list %}
+                                    <tr role="row" class="odd">
+                                        <td>
+                                            {% if obj.active %}
+                                            <form method="get" action="{% url 'mainapp:docker_image_builder' obj.id %}">
+                                                <input type="submit" class="btn btn-primary" value="Build Image">
+                                            </form>
+                                            {% else %}
+                                            Image already build
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ obj.app_name }}</td>
+                                        <td>{{ obj.app_description }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

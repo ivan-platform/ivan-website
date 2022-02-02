@@ -1,0 +1,95 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <!-- Favicon icon -->
+        <title>IVAN-STAKE Dashboard</title>
+        <!-- Custom CSS -->
+        <link href="{% static 'dashboard/css/style.css' %}" rel="stylesheet">
+    </head>
+    <body class="header-fix fix-sidebar">
+        <!-- Main wrapper  -->
+        <div id="main-wrapper">
+            <div class="unix-login">
+                <div class="container-fluid">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4">
+                            <div class="login-content card">
+                                <div class="login-form">
+                                    {% if request.user.is_authenticated %}
+                                        {% if request.user.admin %}
+                                            <h4> Hey {{ request.user }}!</h4>
+                                            <div class="my-2 d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <p> You don't have permission. Please <a href="{% url 'logout' %}">Logout</a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            {% else %}
+
+                                            <h4>Hey {{ request.user }}!</h4>
+                                            <div class="my-2 d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <p> You are already logged in, please go
+                                                        <a href="{% url 'cms:dashboard' %}">Home</a>
+                                                        or
+                                                        <a href="{% url 'logout' %}">Logout</a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            {% endif %}
+                                    {% else %}
+
+                                        <form class="pt-3" method="post">{% csrf_token %}
+                                            <h4>IVAN-STAKE DASHBOARD</h4>
+                                            {% if messages %}
+                                                {% for message in messages %}
+                                                    <div class="alert {{ message.tags }}" role="alert">{{ message|safe }}</div>
+                                                {% endfor %}
+                                            {% endif %}
+                                            {{ form|crispy }}
+                                            <div class="mt-3">
+                                                {% if request.GET.next %}
+                                                <input type="hidden" name="next" value="{{ request.GET.next }}" />
+                                                {% else %}
+                                                <input type="hidden" name="next" value="{{ next }}" />
+                                                {% endif %}
+                                                <input type="submit" class="btn btn-block bg-success btn-lg font-weight-medium auth-form-btn" value="SIGN IN">
+                                            </div>
+                                            <br>
+
+                                            {% comment %} Forgot you password? <a href="{% url 'cms:password_reset' %}">Reset here</a> {% endcomment %}
+                                        </form>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Wrapper -->
+        <!-- All Jquery -->
+        <script src="{% static 'dashboard/js/lib/jquery/jquery.min.js' %}"></script>
+        <!-- Bootstrap tether Core JavaScript -->
+        <script src="{% static 'dashboard/js/lib/bootstrap/js/popper.min.js' %}"></script>
+        <script src="{% static 'dashboard/js/lib/bootstrap/js/bootstrap.min.js' %}"></script>
+        <!-- slimscrollbar scrollbar JavaScript -->
+        <script src="{% static 'dashboard/js/jquery.slimscroll.js' %}"></script>
+        <!--Menu sidebar -->
+        <script src="{% static 'dashboard/js/sidebarmenu.js' %}"></script>
+        <!--stickey kit -->
+        <script src="{% static 'dashboard/js/lib/sticky-kit-master/dist/sticky-kit.min.js' %}"></script>
+        <!--Custom JavaScript -->
+        <script src="{% static 'dashboard/js/custom.min.js' %}"></script>
+    </body>
+</html>
+

@@ -1,0 +1,112 @@
+<!--{% extends "base.html" %}-->
+<!--{% block title %}Dashboard{% endblock %}-->
+<!--{% block content %}-->
+<!--  <h1>Dashboard</h1>-->
+<!--  <p>Welcome to your dashboard.</p>-->
+<!--{% endblock %}-->
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<!-- Bread crumb -->
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">IVAN-STAKE Platform</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Services</li>
+        </ol>
+    </div>
+</div>
+<!-- End Bread crumb -->
+<div class="container-fluid">
+    <!-- Start Page Content -->
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Docker image List</h4>
+                    <div class="table-responsive m-t-40">
+                        <div id="example23_wrapper" class="dataTables_wrapper">
+                            <table id="example23" class="table" cellspacing="0" width="100%" role="grid" aria-describedby="example23_info" style="width: 100%;">
+                                <thead>
+                                    <tr role="row">
+                                        <th class="sorting" tabindex="0" aria-controls="example23" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 181.4px;">Action</th>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="example23" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 295.4px;">First Name</th>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="example23" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 295.4px;">Last Name</th>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="example23" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 295.4px;">Image</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example23" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 430.4px;">Port</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example23" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 430.4px;">Status</th>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="example23" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 295.4px;">Docker ID</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example23" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 430.4px;">Command</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example23" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 226.4px;">Names</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example23" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 430.4px;">Created</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th rowspan="1" colspan="1">Action</th>
+                                        <th rowspan="1" colspan="1">First Name</th>
+                                        <th rowspan="1" colspan="1">Last Name</th>
+                                        <th rowspan="1" colspan="1">Image</th>
+                                        <th rowspan="1" colspan="1">Port</th>
+                                        <th rowspan="1" colspan="1">Status</th>
+                                        <th rowspan="1" colspan="1">Docker ID</th>
+                                        <th rowspan="1" colspan="1">Command</th>
+                                        <th rowspan="1" colspan="1">Names</th>
+                                        <th rowspan="1" colspan="1">Created</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                {% for obj in object_list %}
+                                    <tr role="row" class="odd">
+                                        <td>
+                                            {% if obj.status == 'running' %}
+                                                <form method="post" action="{% url 'mainapp:update' obj.id %}">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="status" value="stop">
+                                                    <a href="{{ obj.url }}" class="btn btn-primary" target="_blank">Open</a>
+                                                    {% if request.user.admin %}
+                                                    <input type="submit" class="btn btn-danger" value="Stop">
+                                                    {% endif %}
+                                                </form>
+                                            {% elif obj.status == 'stop' %}
+                                                <form method="post" action="{% url 'mainapp:update' obj.id %}">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="status" value="running">
+                                                    {% if request.user.admin %}
+                                                        <input type="submit" class="btn btn-danger" value="Restart">
+                                                    {% else %}
+                                                        <span class="text-danger">Terminated by ADMIN</span>
+                                                    {% endif %}
+                                                </form>
+                                            {% endif %}
+                                        </td>
+{#                                        <td>{{ obj.id }}</td>#}
+                                        <td>{{ obj.user.first_name }}</td>
+                                        <td>{{ obj.user.last_name }}</td>
+                                        <td>{{ obj.image|title }}</td>
+                                        <td>{{ obj.ports }}</td>
+                                        <td>{{ obj.status|title }}</td>
+                                        <td>{{ obj.container_id }}</td>
+                                        <td>{{ obj.command }}</td>
+                                        <td>{{ obj.names }}</td>
+                                        <td>{{ obj.created }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

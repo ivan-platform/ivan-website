@@ -1,0 +1,82 @@
+{% load static %}
+<!--<!DOCTYPE html>-->
+<html lang=en>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <title>{% block title %}{% endblock %}</title>
+        <link href="{% static 'dashboard/css/style.css' %}" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/quasar@1.15.21/dist/quasar.min.css" rel="stylesheet" type="text/css">
+<!--        <link href="https://printjs-4de6.kxcdn.com/print.min.css" rel="stylesheet">-->
+</head>
+<body class="header-fix fix-sidebar">
+    <!-- Main wrapper  -->
+    <div id="main-wrapper">
+        <!-- header header  -->
+        {% include 'header.html' %}
+        <!-- End header header -->
+        <!-- Left Sidebar  -->
+        {% include 'sidebar.html' %}
+        <!-- End Left Sidebar  -->
+        <!-- Page wrapper  -->
+        <div class="page-wrapper">
+            <!-- Container fluid  -->
+            {% block content %}
+            {% endblock content %}
+            <!-- End Container fluid  -->
+            <footer class="footer">
+                <div class="row">
+                    <div class="col">
+                        © 2021 Docker. All Right Reserved.
+                    </div>
+                    <div class="col text-right">
+                        Version: 1.0.0
+                    </div>
+                </div>
+            </footer>
+            <!-- End footer -->
+        </div>
+        <!-- End Page wrapper  -->
+    </div>
+    <!-- End Wrapper -->
+    <!-- All Jquery -->
+    <script src="{% static 'dashboard/js/lib/jquery/jquery.min.js' %}"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="{% static 'dashboard/js/lib/bootstrap/js/popper.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/lib/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="{% static 'dashboard/js/jquery.slimscroll.js' %}"></script>
+    <!--Menu sidebar -->
+    <script src="{% static 'dashboard/js/sidebarmenu.js' %}"></script>
+    <!--stickey kit -->
+    <script src="{% static 'dashboard/js/lib/sticky-kit-master/dist/sticky-kit.min.js' %}"></script>
+    <!--stickey kit -->
+    <script src="{% static 'dashboard/js/lib/chart-js/Chart.bundle.js' %}"></script>
+    <script src="{% static 'dashboard/js/lib/chart-js/chartjs-init.js' %}"></script>
+    <!--Custom JavaScript -->
+    <script src="{% static 'dashboard/js/lib/webticker/jquery.webticker.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/lib/peitychart/jquery.peity.min.js' %}"></script>
+    <!-- scripit init-->
+    <script src="{% static 'dashboard/js/custom.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/dashboard-1.js' %}"></script>
+    <script src="{% static 'dashboard/js/product_filter_by_category.js' %}"></script>
+<!--    <script src="{% static 'dashboard/js/order-invoice.js' %}"></script>-->
+
+    <script src="{% static 'dashboard/js/lib/datatables/datatables.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/lib/datatables/cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/lib/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/lib/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js' %}"></script>
+    <script src="{% static 'dashboard/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/lib/datatables/datatables-init.js' %}"></script>
+
+</body>
+</html>
