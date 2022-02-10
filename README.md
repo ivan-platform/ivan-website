@@ -4,6 +4,6 @@ active virtual env
 
 pip install -r requirements.txt
 
-goto directory ivan
+goto directory ivan-website
 
 python manage.py runserver
