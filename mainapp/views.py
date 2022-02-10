@@ -87,7 +87,8 @@ class LoginView(NextUrlMixin, RequestFormAttachMixin, FormView):
 
     def form_valid(self, form):
         print("Form is valid for Login View, going mainapp:dashboard")
-        return redirect("mainapp:dashboard")
+        #return redirect("mainapp:dashboard")
+        return redirect("/vuehome")
 
 
 # after login user will be redirect to this page
