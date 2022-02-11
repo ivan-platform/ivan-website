@@ -11,6 +11,7 @@ app_name = 'mainapp'
 urlpatterns = [
     url('^home$', views.Homepage.as_view(), name='home'), # home page html theme for reference
     url('^$', views.LandingPage.as_view(), name='index'), # our landing page
+    url('^vuehome$', views.FrontendView.as_view(), name='vuehome'), # after login user will be redirect to this page
     url('^dashboard$', views.DashboardView.as_view(), name='dashboard'), # after login user will be redirect to this page
     url('^app-list/$', views.AppListView.as_view(), name='app_list'),
     url('^app/create/$', views.AppCreateView.as_view(), name='create_new_app'),
