@@ -35,9 +35,9 @@ class LandingPage(TemplateView):
 # Redirect for vue dashboard
 class FrontendView(View):
     def get(self, request):
-        return redirect("/vuehome")
+        return redirect("vuehome/")
     def post(self, request):
-        return redirect("/vuehome")
+        return redirect("vuehome/")
 
 # registration
 class RegisterView(FormView, CreateView):
