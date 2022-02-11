@@ -32,7 +32,12 @@ class Homepage(TemplateView):
 class LandingPage(TemplateView):
     template_name = 'landing_page/index.html'
 
-
+# Redirect for vue dashboard
+class FrontendView(View):
+    def get(self, request):
+        return redirect("/vuehome")
+    def post(self, request):
+        return redirect("/vuehome")
 
 # registration
 class RegisterView(FormView, CreateView):
